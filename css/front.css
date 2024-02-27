@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {    
+    background-color: #ebebeb;  
+}
+
+.d-flex {
+    display: flex;
+}
+
+.card {
+    width: 70%;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin: 20px auto;
+}
+
+.mr-1 {
+    margin-right: 10px;
+}
+.mb-3 {
+    margin-right: 30px;
+}
+
+.time {
+    color: #a7a7a7;
+    margin: 5px 0;
+}
+
+.category {
+    color: #767676;
+    margin: 5px 0;
+}
