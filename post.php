@@ -7,16 +7,16 @@ if ( isset( $_SESSION['user'] ) ) {
 require_once 'admin/connect.php';
 require_once 'admin/function.php';
 
-$sql    = 'SELECT * FROM `sr_posts` ORDER BY post_date DESC';
+$post_id = (int) $_GET['post_id'];
+
+$sql    = "SELECT * FROM `sr_posts` WHERE ID = '$post_id'";
 $result = mysqli_query( $con, $sql );
 
 if ( $result ) {
 	$num = mysqli_num_rows( $result );
 
 	if ( $num > 0 ) {
-		for ( $i = 0; $i < $num; $i++ ) {
-			$all_posts[] = mysqli_fetch_assoc( $result );
-		}
+		$post = mysqli_fetch_assoc( $result );
 	}
 }
 
@@ -36,19 +36,11 @@ if ( $result ) {
 
 <div class="container-fluid">
 	<?php
-	foreach ( $all_posts as $post ) {
 		echo '<div class="card"><div class="Post-card">';
 		echo '<div class="author-name"><h4>' . get_author( $post['post_author'] ) . '</h4></div>';
 		echo '<div class="time">' . $post['post_date'] . '</div>';
 		echo '<div class="category"><a href="category.php?cat_id=' . $post['cat_id'] . '" target="_blank">Category: ' . get_category( $post['cat_id'] ) . '</a></div>';
-		echo '<div class="post">' . get_trimcontent( $post['content'], $post['ID'] ) . '</div>';
+		echo '<div class="post">' . $post['content'] . '</div>';
 		echo '</div></div>';
-	}
 	?>
 </div>
-
-
-
-</body>
-
-</html>

@@ -1,7 +1,7 @@
 <?php
 
 
-// Get Author Name form Id
+// Get Author Name form Id.
 function get_author( $author_id ) {
 	global $con;
 	// $author_id = $all_posts['post_author'];
@@ -18,7 +18,7 @@ function get_author( $author_id ) {
 	return $author_name;
 }
 
-// Get Category name form Id
+// Get Category name form Id.
 function get_category( $cat_id ) {
 	global $con;
 	// $author_id = $all_posts['post_author'];
@@ -33,4 +33,15 @@ function get_category( $cat_id ) {
 		}
 	}
 	return $category_name;
+}
+
+// Get Trimcontent.
+function get_trimcontent( $content, $post_id ) {
+	$content;
+	if ( strlen( $content ) > 25 ) {
+		$trimcontent = substr( $content, 0, 500 ) . ' <a href="post.php?post_id=' . $post_id . '">Read more...</a>';
+	} else {
+		$trimcontent = $content;
+	}
+		return $trimcontent;
 }
